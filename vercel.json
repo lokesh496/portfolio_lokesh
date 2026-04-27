@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "source": "/resume.pdf",
+      "destination": "/resume.pdf"
     },
     {
-      "source": "/((?!resume\\.pdf|assets/|.*\\..*).*)",
+      "source": "/((?!resume\\.pdf|api/|assets/|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],
@@ -19,7 +19,7 @@
         },
         {
           "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, proxy-revalidate"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
