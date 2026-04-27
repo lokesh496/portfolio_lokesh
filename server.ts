@@ -33,7 +33,7 @@ async function startServer() {
 
       const data = await resend.emails.send({
         from: 'Portfolio <onboarding@resend.dev>',
-        to: ['veerankilokesh496@gmail.com'], // User's email from metadata
+        to: ['veerankilokesh496@gmail.com'], // Using your email
         subject: `New Message from ${name}`,
         html: `
           <h3>New Portfolio Message</h3>
