@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createServer as createViteServer } from "vite";
@@ -51,16 +52,40 @@ async function startServer() {
     }
   });
 
-  // Vite middleware for development
+  // Serve static files from the public directory in development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
+    
+    // Explicitly serve resume.pdf from public folder if needed
+    app.get('/resume.pdf', (req, res) => {
+      res.sendFile(path.join(__dirname, 'public', 'resume.pdf'));
+    });
+
+    // Handle SPA fallback for development
+    app.get('*', async (req, res, next) => {
+      if (req.originalUrl.startsWith('/api')) return next();
+      try {
+        const template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+        const transformedTemplate = await vite.transformIndexHtml(req.originalUrl, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(transformedTemplate);
+      } catch (e) {
+        vite.ssrFixStacktrace(e as Error);
+        next(e);
+      }
+    });
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
+    
+    // Explicitly serve resume.pdf from dist if needed
+    app.get('/resume.pdf', (req, res) => {
+      res.sendFile(path.join(distPath, 'resume.pdf'));
+    });
+
     app.get('*', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
