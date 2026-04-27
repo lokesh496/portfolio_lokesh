@@ -1,5 +1,4 @@
 {
-  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*).pdf",
@@ -7,25 +6,21 @@
         {
           "key": "Content-Type",
           "value": "application/pdf"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": "attachment"
         }
       ]
     }
   ],
   "rewrites": [
     {
-      "source": "/LokeshKumar_Resume.pdf",
-      "destination": "/LokeshKumar_Resume.pdf"
-    },
-    {
       "source": "/api/:path*",
       "destination": "/api/:path*"
     },
     {
-      "source": "/((?!api/|.*\\.).*)",
+      "source": "/(.*\\.(pdf|png|jpg|jpeg|gif|svg|ico|js|css|json))",
+      "destination": "/$1"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
