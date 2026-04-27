@@ -54,8 +54,8 @@ export default function Navbar() {
               </a>
             ))}
             <a 
-              href="/LokeshKumar_Resume.pdf"
-              download="LokeshKumar_Resume.pdf"
+              href="/resume.pdf"
+              download="resume.pdf"
               className="bg-white text-black px-8 py-3 rounded-full text-[10px] font-black tracking-widest uppercase hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 shadow-xl"
             >
               RESUME
@@ -99,8 +99,8 @@ export default function Navbar() {
                 </a>
               ))}
               <a 
-                href="/LokeshKumar_Resume.pdf"
-                download="LokeshKumar_Resume.pdf"
+                href="/resume.pdf"
+                download="resume.pdf"
                 className="block w-full text-center bg-blue-600 text-white px-6 py-4 rounded-xl text-xs font-black uppercase tracking-[0.2em] mt-4"
               >
                 Download Resume
