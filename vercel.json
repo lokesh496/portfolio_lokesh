@@ -1,5 +1,25 @@
 {
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*).pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment"
+        }
+      ]
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/LokeshKumar_Resume.pdf",
+      "destination": "/LokeshKumar_Resume.pdf"
+    },
     {
       "source": "/api/:path*",
       "destination": "/api/:path*"

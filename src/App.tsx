@@ -99,7 +99,7 @@ export default function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="/LokeshKumar_Resume.pdf"
-              download
+              download="LokeshKumar_Resume.pdf"
               className="inline-flex items-center space-x-4 bg-blue-600 text-white px-12 py-6 rounded-2xl font-black text-xs tracking-[0.3em] uppercase transition-all shadow-[0_20px_50px_rgba(37,99,235,0.2)] hover:bg-white hover:text-black"
             >
               <Download className="w-5 h-5" />
